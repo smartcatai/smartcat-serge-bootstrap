@@ -70,7 +70,7 @@ While the localization is running in background (eventually you will want to run
 
 ## Adding VCS Synchronization
 
-The last missing step is to make Serge not only generate the localized files locally, but also pull the sources from your actual source code repository, and push localized files back to the remote repo. Since Git is the most popular version control system, this sample project includes a stub for a Git server.
+The last missing step is to make Serge not only generate the localized files locally, but also pull the sources from your actual source code repository, and push localized files back to the remote repo. Since Git is the most popular version control system, this sample project includes a stub for connecting to a Git repo.
 
 Edit the `configs/project-a.serge` file so that _→ sync → vcs → data →_ `remote_path` parameter points to the actual remote repository URL. Now initialize the data from the remote repo (this will remove the previous contents of `vcs/project-a` folder with the contents of your repository):
 
@@ -80,7 +80,7 @@ serge pull --initialize project-a.serge
 
 The `--initialize` parameter in this command is needed only once, when you want to delete and re-populate the contents of the project folder.
 
-Now your project has a different directory structure, and maybe different files (not JSON), so you need to edit your `configs/project-a.serge` file accordingly (see _→ jobs → (first job section) →_ `source_dir`, `source_match`, `output_file_path` parameters, and the `parser` section). At this point we recommend you to spend some time reading the [Serge documentation](https://serge.io/docs/) for the list of available parsers and their parameters, and for the [configuration file syntax and reference](https://serge.io/docs/configuration-files/syntax/).
+Now your project has a different directory structure, and maybe different files (not JSON), so you need to edit your `configs/project-a.serge` file accordingly (see _→ jobs → (first job section) →_ `source_dir`, `source_match`, `output_file_path` parameters, and the `parser` section). At this point we recommend you to spend some time reading the [Serge documentation](https://serge.io/docs/) for the list of available parsers and their parameters, and the [configuration file syntax and reference](https://serge.io/docs/configuration-files/syntax/).
 
 Once you have your job parameters tweaked, it's time to test this by running a localization cycle once again, and also cleaning up the outdated translation files:
 

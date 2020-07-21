@@ -1,14 +1,12 @@
-Clone or download this project into any local folder and use it to bootstrap your first continuous localization project with Serge and Smartcat.
-
-See the [smartcat-serge-sync-plugin](https://github.com/smartcatai/smartcat-serge-sync-plugin) repository for installation instructions.
-
-# Getting Started Guide
-
-Clone this project into any empty directory:
+Clone or download this project into any local folder and use it to bootstrap your first continuous localization project with Serge and Smartcat:
 
 ```
 git clone https://github.com/smartcatai/smartcat-serge-bootstrap.git
 ```
+
+See the [smartcat-serge-sync-plugin](https://github.com/smartcatai/smartcat-serge-sync-plugin) repository if you haven't installed Serge or Smartcat plugin yet.
+
+# Getting Started Guide
 
 ## Getting Around
 

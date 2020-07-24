@@ -32,8 +32,8 @@ jobs
     {
         @inherit                                common.serge.inc#common-settings/job
 
-        name                                    Localize JSON files for project 'project-a'
-        id                                      project-a.json
+        name                                    Localize JavaScript files for project 'project-a'
+        id                                      project-a.js
         db_namespace                            project-a
 
         /*
@@ -43,7 +43,7 @@ jobs
         destination_languages                   de ru
 
         source_dir                              ../vcs/project-a/en
-        source_match                            \.json$
+        source_match                            \.js$
         source_process_subdirs                  YES
 
         output_file_path                        ../vcs/project-a/%LANG%/%FILE%
@@ -52,12 +52,7 @@ jobs
 
         parser
         {
-            plugin                              parse_json
-
-            data
-            {
-                path_matches                    .
-            }
+            plugin                              parse_js
         }
     }
 }

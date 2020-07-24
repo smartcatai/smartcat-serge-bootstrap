@@ -37,7 +37,7 @@ Run `serge localize` once again from the `configs` directory. If you now open th
 
 ## Connecting with Smartcat
 
-1. Create a new project in Smartcat.
+1. Create a new project in Smartcat with _English_ as a source language and _German_ and _Russian_ as target ones. Languages must be registered on the project before you can upload files targeting those languages. You can later change the list of target languages at any time.
 2. Edit the [configs/common.serge.inc](configs/common.serge.inc) file and fill out your account parameters and credentials under _common-settings → ts_ config section: `base_url`, `token_id`, and `token`. Instructions next to each parameter will help you understand where to get the values from. Once defined, these settings will be shared across your future localization projects.
 3. Edit the [configs/project-a.serge](configs/project-a.serge) file and specify the `project_id`, following the instructions in the configuration file.
 

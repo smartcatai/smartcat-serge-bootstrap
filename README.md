@@ -1,10 +1,18 @@
-Clone or download this project into any local folder and use it to bootstrap your first continuous localization project with Serge and Smartcat:
+This demo project will allow you to bootstrap your first continuous localization project with Serge and Smartcat in minutes.
 
-```
-git clone https://github.com/smartcatai/smartcat-serge-bootstrap.git
-```
+# Installation
 
-See the [smartcat-serge-sync-plugin](https://github.com/smartcatai/smartcat-serge-sync-plugin) repository if you haven't installed Serge or Smartcat plugin yet.
+1. Create an account at [Smartcat.](https://www.smartcat.ai/)
+2. Create a new project in Smartcat to synchronize your data with, with _English_ as a source and _German_ and _Russian_ as target languages (don't worry, you will be able to change the settings later).
+3. [Install the **latest** version of Serge.](https://serge.io/download/?/latest)
+4. Install the Smartcat command-line synchronization tool (`smartcat-cli`):
+    ```
+    sudo cpan Smartcat::App
+    ```
+5. Clone this repository:
+    ```
+    git clone https://github.com/smartcatai/smartcat-serge-bootstrap.git
+    ```
 
 # Getting Started Guide
 
@@ -15,7 +23,7 @@ This repository contains a sample project, `project-a`. First things to do are:
 -   See the configuration file: [configs/project-a.serge](configs/project-a.serge)
 -   Look at the contents of the source project folder: [vcs/project-a](vcs/project-a)
 
-This sample project is set up to have `en` (English) as a source language, `de` and `ru` as target languages, and will process all keys in JSON resource files in [vcs/project-a/en](vcs/project-a/en) directory.
+This sample project is set up to have `en` (English) as a source language and `de` (German) and `ru` (Russian) as target languages, and will process all keys in JSON resource files in [vcs/project-a/en](vcs/project-a/en) directory.
 
 ## Initial Run
 

@@ -2,7 +2,7 @@ common-settings
 {
     ts
     {
-        plugin                      Smartcat
+        plugin                                  smartcat_v2
 
         data
         {
@@ -17,14 +17,14 @@ common-settings
             by just signing into your account
             and looking at the URL.
             */
-            base_url                https://smartcat.ai
+            base_url                            https://smartcat.ai
 
             /*
             Provide your account ID as it is displayed on
             your `Settings > API` page once you sign into
             your Smartcat account.
             */
-            token_id                12345678-abcd-9876-5432-abcdef012345
+            account_id                          12345678-abcd-9876-5432-abcdef012345
 
             /*
             Go to `Settings > API` page in your account,
@@ -32,26 +32,26 @@ common-settings
             e.g. 'Serge', and the auto-generated secret part
             of the key is what needs to be added here.
             */
-            token                   1_AaBbCcDdEeFfGgHhIiJjKkLlM
+            token                               1_AaBbCcDdEeFfGgHhIiJjKkLlM
 
             /*
             [OPTIONAL] Write plugin activity log to the specified file
             (enable this only for debugging, if requested by Smartcat support).
             */
-            #log_file                /var/log/smartcat.log
+            #log_file                           /var/log/smartcat.log
         }
     }
 
     vcs
     {
-        plugin                      git
+        plugin                                  git
 
         data
         {
-            add_unversioned         YES
-            clone_params            --depth 1
-            email                   l10n@mycompany.com
-            name                    L10N Robot
+            add_unversioned                     YES
+            clone_params                        --depth 1
+            email                               l10n@mycompany.com
+            name                                L10N Robot
         }
     }
 
@@ -84,12 +84,12 @@ common-settings
             */
             :flatten-ts-file-path
             {
-                plugin                           replace_strings
-                phase                            rewrite_relative_ts_file_path
+                plugin                          replace_strings
+                phase                           rewrite_relative_ts_file_path
 
                 data
                 {
-                    replace                      `\/` `--` g
+                    replace                     `\/` `--` g
                 }
             }
         }

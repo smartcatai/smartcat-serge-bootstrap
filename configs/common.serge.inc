@@ -35,10 +35,9 @@ common-settings
             token                               1_AaBbCcDdEeFfGgHhIiJjKkLlM
 
             /*
-            [OPTIONAL] Write plugin activity log to the specified file
-            (enable this only for debugging, if requested by Smartcat support).
+            [OPTIONAL] Enable debug mode if requested by Smartcat support.
             */
-            #log_file                           /var/log/smartcat.log
+            #debug                               YES
         }
     }
 

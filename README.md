@@ -1,22 +1,53 @@
-This demo project will allow you to bootstrap your first continuous localization project with Serge and Smartcat in minutes.
+# Serge
+
+[Serge](https://serge.io/) _(String Extraction and Resource Generation Engine)_ is a cross-platform command-line tool that allows you to quickly set up scalable continuous localization processes. It allows developers to concentrate on maintaining resource files in a source language, and will take care of keeping all localized resource files in sync, delivered right into your version control system.
+
+This demo project will allow you to bootstrap your first continuous localization project with Serge and [Smartcat](https://smartcat.ai/) in minutes.
+
+Initially you can run Serge on your own computer to setup your localization projects. Once the configuration files are ready, run it on a dedicated server to enable continuous synchronization between Smartcat and your code repositories and other data sources.
 
 # Installation
 
-1. Create an account at [Smartcat.](https://www.smartcat.ai/)
-2. Create a new project in Smartcat to synchronize your data with, with _English_ as a source and _German_ and _Russian_ as target languages (don't worry, you will be able to change the settings later).
-3. [Install the **latest** version of Serge.](https://serge.io/download/?/latest)
-4. Install the Smartcat command-line synchronization tool (`smartcat-cli`):
-    ```
-    sudo cpan Smartcat::App
-    ```
-5. Clone this repository:
-    ```
-    git clone https://github.com/smartcatai/smartcat-serge-bootstrap.git
-    ```
+1. [Install Docker](https://www.docker.com/products/docker-desktop) for your Windows, Mac, or Linux.
 
-# Getting Started Guide
+2. Run this command to install Serge for the first time, or to update it to a latest version:
 
-## Getting Around
+       $ docker pull smartcatcom/serge
+
+3. Clone this repository into any directory:
+
+       $ git clone https://github.com/smartcatai/smartcat-serge-bootstrap.git
+
+4. Create an account at [Smartcat.](https://www.smartcat.ai/)
+5. Create a new project in Smartcat to synchronize your data with, with _English_ as a source and _German_ and _Russian_ as target languages (don't worry, you will be able to change the settings later).
+
+# Getting Started
+
+## Running Serge in interactive mode
+
+In the root directory of this repo we have provided you a convenience script to run a Serge shell, from which you will have access to `serge` command. Run it as follows (both under Windows, Mac or Linux):
+
+    $ ./serge-shell
+
+When you enter your shell, the root directory of your bootstrap project will be mounted as `/data` and you will see the following prompt:
+
+    [Serge Shell] /data $
+
+---
+
+**Note:** Here and below, it is assumed that you're running the commands inside this shell. At the same time, you can continue editing the configuration files or browse the directory outside of the shell in Explorer, Finder, or any other favorite file management tool and code editor.
+
+---
+
+Now you that you are inside this interactive shell, you can run Serge (the command below will just show some short usage synopsis and a list of available commands):
+
+    $ serge
+
+To exit the shell later, use the `exit` command:
+
+    $ exit
+
+## Getting around
 
 This repository contains a sample project, `project-a`. First things to do are:
 
@@ -25,19 +56,18 @@ This repository contains a sample project, `project-a`. First things to do are:
 
 This sample project is set up to have `en` (English) as a source language and `de` (German) and `ru` (Russian) as target languages, and will process all keys in JSON resource files in [vcs/project-a/en](vcs/project-a/en) directory.
 
-## Initial Run
+## Initial run
 
-Go to `configs` directory and run the localization step:
+Go to the `configs` directory and run the localization step:
 
-```
-serge localize
-```
+    $ cd configs
+    $ serge localize
 
 This will create localized files under `vcs/project-a/de` and `vcs/project-a/ru` directories. These files will have English content, since translations have not been provided just yet.
 
 The same localization step will generate translation files under `ts/project-a/de` and `ts/project-a/ru` directories. You can examine the generated `.po` files and also see their initial state with no translations.
 
-## Doing Translations Locally
+## Doing translations locally
 
 Edit e.g. `ts/project-a/de/example.json.po` file and provide a translation for a single string (for testing purposes, any random "translation" will work).
 
@@ -51,9 +81,7 @@ Run `serge localize` once again from the `configs` directory. If you now open th
 
 Now you can push your translation files to Smartcat:
 
-```
-serge push-ts
-```
+    $ serge push-ts
 
 Go to Smartcat, open the test project you created, and there you will see your `example.json_de` and `example.json_ru` files available for translation, one for German, and another one for Russian.
 
@@ -61,13 +89,11 @@ Open e.g. `example.json_de` and edit the translation for the string that you tra
 
 Now you can pull translations from Smartcat and run a localization cycle at once:
 
-```
-serge pull-ts localize
-```
+    $ serge pull-ts localize
 
 If you now open the localized resource file, `vcs/project-a/de/example.json`, you will see that the new translation has been integrated into the JSON file.
 
-## Running Localization Continuously
+## Running the localization continuously
 
 This project has two convenience scripts, [sync-once.sh](sync-once.sh) and [sync-loop.sh](sync-loop.sh) that you can use as a starting point for your continuous localization process.
 
@@ -76,15 +102,13 @@ This project has two convenience scripts, [sync-once.sh](sync-once.sh) and [sync
 
 While the localization is running in background (eventually you will want to run it on a dedicated server), you can modify your example project (add or delete source JSON files, add, change or delete keys in those JSON files) and provide translations on Smartcat side at the same time, and Serge will merge in all these changes, gathering the new translations, updating the localized resources, and pushing new strings for translation.
 
-## Adding VCS Synchronization
+## Adding VCS synchronization
 
 The last missing step is to make Serge not only generate the localized files locally, but also pull the sources from your actual source code repository, and push localized files back to the remote repo. Since Git is the most popular version control system, this sample project includes a stub for connecting to a Git repo.
 
 Edit the `configs/project-a.serge` file so that _→ sync → vcs → data →_ `remote_path` parameter points to the actual remote repository URL. Now initialize the data from the remote repo (this will remove the previous contents of `vcs/project-a` folder with the contents of your repository):
 
-```
-serge pull --initialize project-a.serge
-```
+    $ serge pull --initialize project-a.serge
 
 The `--initialize` parameter in this command is needed only once, when you want to delete and re-populate the contents of the project folder.
 
@@ -92,16 +116,12 @@ Now your project has a different directory structure, and maybe different files 
 
 Once you have your job parameters tweaked, it's time to test this by running a localization cycle once again, and also cleaning up the outdated translation files:
 
-```
-serge localize
-serge clean-ts
-```
+    $ serge localize
+    $ serge clean-ts
 
 If you see that a set of localized files was properly created in your `vcs/project-a` folder, and that translation files in `ts/project-a` folder also look good, you can push the localized files back to the remote repository:
 
-```
-serge push
-```
+    $ serge push
 
 The last and final step is to enable the full synchronization cycle. Edit the `sync-once.sh` script by disabling the `serge pull-ts localize push-ts` line and enabling the `serge sync` line. The latter command is equivalent to `serge pull pull-ts localize push-ts push`. In human language, this means that running `serge sync` will do everything a continuous localization is expected to do: pull the new contents from both your Git server and Smartcat, update localized resources and translation files, and push changes back to Git and Smartcat, respectively.
 
@@ -112,6 +132,16 @@ Finally, run:
 ```
 
 Congratulations! You now live in the world of smooth continuous localization _(press Ctrl+C anytime to get back to reality)_.
+
+## Running Serge in a non-interactive mode
+
+When you don't need an interactive shell (especially when you're running Serge on a dedicated server), you can use a provided `run-in-docker` wrapper, as follows:
+
+    $ ./run-in-docker serge localize configs/project-a.serge
+
+or:
+
+    $ ./run-in-docker ./sync-loop.sh
 
 ## Adding new projects
 

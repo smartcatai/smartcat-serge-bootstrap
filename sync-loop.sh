@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-while :
+while true
 do
     ./sync-once.sh
 

@@ -11,4 +11,6 @@ set -e
 cp -R /tmp/.ssh /root/.ssh
 chmod 700 /root/.ssh
 chmod 600 /root/.ssh/*
-chmod 644 /root/.ssh/*.pub
+if test -e "/root/.ssh/*.pub"; then
+    chmod -f 644 /root/.ssh/*.pub
+fi

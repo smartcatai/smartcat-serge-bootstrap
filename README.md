@@ -1,10 +1,33 @@
-# Serge
+# Sample continuous localization project for Smartcat
 
-[Serge](https://serge.io/) _(String Extraction and Resource Generation Engine)_ is a cross-platform command-line tool that allows you to quickly set up scalable continuous localization processes. It allows developers to concentrate on maintaining resource files in a source language, and will take care of keeping all localized resource files in sync, delivered right into your version control system.
+This example project has everything you need to set up your continuous localization project on [Smartcat](https://smartcat.ai/) platform in minutes.
 
-This demo project will allow you to bootstrap your first continuous localization project with Serge and [Smartcat](https://smartcat.ai/) in minutes.
+What we offer here is a pre-configured Docker container with our command-line localization automation tool, [Serge](https://serge.io/) _(String Extraction and Resource Generation Engine)_, which will pull the changes from your code repository, scan and parse the files, send translation data over to Smartcat, get translations back, integrate them into its local database, generate localized files and push them back to your repo, all in a single sweep.
 
-Initially you can run Serge on your own computer to setup your localization projects. Once the configuration files are ready, run it on a dedicated server to enable continuous synchronization between Smartcat and your code repositories and other data sources.
+This approach to localization:
+
+-   Doesn't require writing custom low-level integration code: you write declarative configuration files instead
+-   Doesn't require you to change your CI/CD build process: translations are integrated statically into your source code repository
+-   Is secure: you don't give Smartcat direct access to your source code repositories, and you control all the synchronization
+-   Is vendor lock-in free: you own your translation data, and can generate localized resource files completely offline
+-   Is flexible: you can manually run it on your computer, or run it on a schedule on a dedicated host
+-   Is powerful: you can implement localization workflows that otherwise would require many months of development (see below).
+
+## Features
+
+With our continuous localization solution, you have an unprecedented flexibility and power. Some ideas that might inspire you are:
+
+-   Automatic discovery and localization of multiple product branches
+-   Ability to prohibit localized file updates unless they are 100% translated (handy for marketing materials!)
+-   Ability to specify target languages right in each file, to enable automated self-service scenarios
+-   Pseudo-localization for easier internationalization (i18n) QA
+-   Conditional exclusion of certain strings by mask
+-   Ability to auto-generate comments and preview links for each string
+-   Ability to group multiple repositories and different file types under a same logical project
+-   Ability to preprocess source files for greater flexibility
+-   Ability to post-process localized files so that the final result is CI/CD-ready
+-   Ability to email developers if source files are broken
+-   ... and much more!
 
 # Installation
 
@@ -147,20 +170,6 @@ or:
 
 In the paradigm of continuous localization, your Smartcat projects will be permanent; content in these projects will be constantly updated, reflecting the changes in your repositories and external content sources. You can create one project for your iOS application, another one for Android, for your website, documentation, and so on. To set up a new project (besides creating one in Smartcat), you will need to make a copy of `configs/project-a.serge` to `configs/project-b.serge` (of course, file and project names are up to you), and edit a new configuration file accordingly.
 
-## Unlocking the true power of Serge
+## Getting professional support
 
-With Serge as a continuous localization solution, you have an unprecedented flexibility and power. Some ideas that might inspire you are:
-
--   Automatic discovery and localization of multiple product branches
--   Ability to prohibit localized file updates unless they are 100% translated (handy for marketing materials!)
--   Ability to specify target languages right in each file, to enable automated self-service scenarios
--   Pseudo-localization for easier internationalization (i18n) QA
--   Conditional exclusion of certain strings by mask
--   Ability to auto-generate comments and preview links for each string
--   Ability to group multiple repositories and different file types under a same logical project
--   Ability to preprocess source files for greater flexibility
--   Ability to post-process localized files so that the final result is CI/CD-ready
--   Ability to email developers if source files are broken
--   ... and much more!
-
-At Smartcat, we strive to build delightful localization processes that work seamlessly and don't slow you down. We offer managed solutions and localization engineering services [as a part of the subscription](https://www.smartcat.ai/pricing/), so you don't have to figure this out all by yourself!</p>
+At Smartcat, we strive to build delightful localization processes that work seamlessly and don't slow you down. We offer managed solutions and localization engineering services [as a part of the subscription](https://www.smartcat.com/pricing/), so you don't have to figure this out all by yourself!</p>

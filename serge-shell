@@ -2,11 +2,11 @@
 
 DIR=$(perl -e "use Cwd qw(abs_path); use File::Basename; print dirname(abs_path('$0'))")
 
-PARAMS="--entrypoint /usr/local/bin/boot/run-in-docker.sh"
+PARAMS="--entrypoint /usr/local/bin/boot/run-command"
 if [ $# -eq 0 ]; then
     echo "No arguments provided, will run an interactive shell"
     echo "Mounting $DIR as /root"
-    PARAMS="-it --entrypoint /usr/local/bin/boot/serge-shell.sh"
+    PARAMS="-it --entrypoint /usr/local/bin/boot/run-shell"
 fi
 
 docker run \

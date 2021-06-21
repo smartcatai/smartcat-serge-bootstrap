@@ -2,12 +2,17 @@
 
 DIR=$(perl -e "use Cwd qw(abs_path); use File::Basename; print dirname(abs_path('$0'))")
 
-echo "Mounting $DIR as /data"
+PARAMS="--entrypoint /usr/local/bin/boot/run-in-docker.sh"
+if [ $# -eq 0 ]; then
+    echo "No arguments provided, will run an interactive shell"
+    echo "Mounting $DIR as /root"
+    PARAMS="-it --entrypoint /usr/local/bin/boot/serge-shell.sh"
+fi
+
 docker run \
     --rm \
-    -v "$DIR:/data" \
-    -v "$DIR/.ssh:/tmp/.ssh" \
-    -it \
-    --entrypoint boot/serge-shell.sh \
+    -v "$DIR:/root" \
+    $PARAMS \
     --env PS1="\[\033[01;35m\][Serge Shell]\[\033[00m\] \w \$ " \
-    smartcatcom/serge
+    smartcatcom/serge:v2 \
+    "$@"

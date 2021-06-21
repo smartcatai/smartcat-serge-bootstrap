@@ -1,8 +1,11 @@
 ~*
-.ssh
 .DS_Store
+*.local.*
 
-db
-log
-ts
-vcs
+/.ssh
+/data
+/db
+/ts
+/.ash_history
+/.initialized
+/serge-import-report-*.html

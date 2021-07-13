@@ -37,9 +37,10 @@ With our continuous localization solution, you have an unprecedented flexibility
 
        $ docker pull smartcatcom/serge:v2
 
-3. Clone this repository into any directory:
+3. Clone this repository into any directory and switch to v2 branch:
 
-       $ git clone https://github.com/smartcatai/smartcat-serge-bootstrap.git
+       $ git clone https://github.com/smartcatai/smartcat-serge-bootstrap.git .
+       $ git checkout v2
 
 # Getting Started
 

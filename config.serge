@@ -37,6 +37,11 @@ sync
             # https://us.smartcat.ai/projects/01234567-890a-bcde-f012-34567890abcd/files?documentPage=1
             # then the ID will be 01234567-890a-bcde-f012-34567890abcd
             project_id                          01234567-890a-bcde-f012-34567890abcd
+
+            # `--mode=current`   = download any translations, even unconfirmed ones (default).
+            # `--mode=confirmed` = download segments at the confirmed stage
+            # `--mode=complete`  = download segments that passed through all translation stages. 
+            pull_params                         --mode=confirmed
         }
     }
 

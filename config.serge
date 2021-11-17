@@ -95,6 +95,11 @@ inc
 
         ts_file_path                            ts/%LANG%/%FILE%.po
 
+        /*
+        Cross-file repetitions will be handled on Smartcat side
+        */
+        reuse_translations                      NO
+
         callback_plugins
         {
             /*
